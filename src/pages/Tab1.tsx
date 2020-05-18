@@ -14,16 +14,23 @@ import {
 } from '@ionic/react';
 
 import './Tab1.css';
-import {connect} from "react-redux"
+import {connect, useDispatch } from "react-redux"
+import {ActionSetDID} from "../store/redux/profile"
 
 declare let appManager: AppManagerPlugin.AppManager;
 
 const Tab1: React.FC = (props: any) => {
 
+  const dispatch = useDispatch()
+
   const closeApp = useCallback( () => {
     console.log("dApp is closing!")
     appManager.close();
   }, [appManager])
+
+  const logout = useCallback( () => {
+    dispatch(ActionSetDID(''))
+  }, [])
 
   return (
     <IonPage>
@@ -43,6 +50,8 @@ const Tab1: React.FC = (props: any) => {
             <p>
               Hello {props.profile.name}
             </p>
+
+            <IonButton expand="block" onClick={logout}>Logout</IonButton>
 
             <IonButton onClick={closeApp}>Close the app</IonButton>
           </IonCardContent>
