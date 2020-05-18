@@ -30,7 +30,8 @@
   "default_locale": "en",
   "plugins": [
     "Device",
-    "NetworkStatus"
+    "NetworkStatus",
+    "File"
   ],
   "urls": [
     "http://www.yourappserver.com/*"
